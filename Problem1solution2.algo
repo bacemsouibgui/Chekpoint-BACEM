@@ -1,0 +1,55 @@
+ ALGORITHM Htab-solution
+VAR
+    set1, set2:ARRAY_OF INTEGER[100];
+    setKeys:  ARRAY_OF INTEGER[100];
+    dict: HASH_TABLE< INTEGER,INTEGER>
+    i,count: INTEGER
+    sum: INTEGER:=0;
+
+BEGIN
+
+// reading elements in the two sets//
+
+    FOR i FROM 0 TO set1.legth-1 DO
+        read(set1[i])
+    END_FOR
+    FOR i FROM 0 TO set2.legth-1  DO
+        read(set2[i])
+    END_FOR
+
+    // insert all the elements from both the sets with the element as key and its count as value(in both arrays)
+
+    FOR i FROM 0 TO set1.legth-1 STEP 1  DO
+        IF (dict.lookup(set1[i]=true)) THEN
+            count:=dict.get(set1[i])
+            dict.insert(set1[i],count+1)
+            ELSE
+            dict.insert(set1[i],1)
+        END_IF
+    END_FOR
+
+    //same for set2
+
+    FOR i FROM 0 TO set2.legth-1 STEP 1  DO
+        IF (dict.lookup(set2[i]=true)) THEN
+            count:=dict.get(set2[i])
+            dict.insert(set2[i],count+1)
+            ELSE
+            dict.insert(set2[i],1)
+        END_IF
+    END_FOR
+
+    setKeys:=dict.getkeys()
+
+    // get sum of disctinct elements.
+
+    FOR i FROM 0 TO setKeys.length-1 step 1  DO
+        IF (dict.get(setKeys[i])=1) THEN
+            sum:=sum+setKeys[i];
+        END_IF
+    END_FOR
+
+    write("la somme est",sum);
+
+
+END

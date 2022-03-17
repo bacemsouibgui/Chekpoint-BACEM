@@ -1,0 +1,48 @@
+ALGORITHM SumTabs
+VAR
+    SUM,i,j,n: integer
+    tab1,tab2: ARRAY_OF integer[n];
+    found:booléen
+BEGIN
+    SUM:=0;
+
+
+    FOR i FROM 0 TO n DO
+        read(tab1[i])
+    END_FOR
+    FOR j FROM 0 TO n DO
+         read(tab2[j])
+
+    END_FOR
+
+
+
+     for i from 1 to tab1.length DO
+     found := false
+     for j from 1 to tab2.length DO
+     IF (tab1[i]=tab2[j]) THEN
+         found:=True
+     END_IF
+     END_FOR
+     IF (found=false) THEN
+         SUM=SUM+tab1[i]
+     END_IF
+     END_FOR
+
+
+     FOR j FROM 1 to tab2.length  DO
+         found:=false
+    FOR i FROM 1 TO tab1.length  DO
+        IF (tab2[j]=tab1[i]) THEN
+            found:=True
+        END_IF
+    END_FOR
+     END_FOR
+
+     IF (found=false) THEN
+         SUM=SUM+tab2[j]
+     END_IF
+
+write("la somme est",SUM);
+
+END
